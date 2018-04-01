@@ -1,6 +1,6 @@
 {
   "name": "array-table-sort",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Sort an array (asc, desc) that holds data for tables",
   "main": "./lib/index.js",
   "repository": "https://www.github.com/aichbauer/node-array-table-search",
