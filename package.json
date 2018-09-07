@@ -8,11 +8,12 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "pretest": "npm run build && npm run lint",
+    "pretest": "yarn run build && yarn run lint",
     "lint": "eslint src",
     "test": "jest --coverage",
     "build": "rm -rf lib && babel src --out-dir lib",
-    "prepublish": "npm run build"
+    "prepush": "yarn run test",
+    "prepublish": "yarn run build"
   },
   "keywords": [
     "array",
@@ -42,6 +43,7 @@
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "husky": "^0.14.3",
     "jest": "^23.5.0",
     "regenerator-runtime": "^0.12.1"
   }
