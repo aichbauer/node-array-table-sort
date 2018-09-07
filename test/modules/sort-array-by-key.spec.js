@@ -19,7 +19,7 @@ test('check if data.first sorted asc', () => {
 test('check if data.first sorted desc', () => {
   const expectedDesc = [...expectedResultSortFirst];
   const result = sort(data, sortOptions(false));
-  
+
   expect(result).toEqual(expectedDesc);
 });
 
