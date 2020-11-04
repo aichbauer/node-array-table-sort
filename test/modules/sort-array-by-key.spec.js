@@ -4,30 +4,39 @@ import {
 } from '../fixtures/data';
 import { sortOptions } from '../fixtures/options';
 import {
-  expectedResultSortFirst,
-  expectedResultSortFirstWithSameValue,
+  expectedResultSortFirstAsc,
+  expectedResultSortFirstDesc,
+  expectedResultSortFirstDescWithSameValue,
+  expectedResultSortFirstAscWithSameValue,
 } from '../fixtures/expected-results';
 import { sortArrayByKey as sort } from '../../src';
 
 test('check if data.first sorted asc', () => {
-  const expectedAsc = [...expectedResultSortFirst];
+  const expectedAsc = [...expectedResultSortFirstAsc];
   const result = sort(data, sortOptions(true));
 
-  expect(result).toEqual(expectedAsc.reverse());
+  expect(result).toEqual(expectedAsc);
 });
 
 test('check if data.first sorted desc', () => {
-  const expectedDesc = [...expectedResultSortFirst];
+  const expectedDesc = [...expectedResultSortFirstDesc];
   const result = sort(data, sortOptions(false));
 
   expect(result).toEqual(expectedDesc);
 });
 
 test('check if data.first sorted asc when two rows in a column have the same value', () => {
-  const expectedAsc = [...expectedResultSortFirstWithSameValue];
+  const expectedAsc = [...expectedResultSortFirstAscWithSameValue];
   const result = sort(dataSameValue, sortOptions(true));
 
   expect(result).toEqual(expectedAsc);
+});
+
+test('check if data.first sorted desc when two rows in a column have the same value', () => {
+  const expectedDesc = [...expectedResultSortFirstDescWithSameValue];
+  const result = sort(dataSameValue, sortOptions(false));
+
+  expect(result).toEqual(expectedDesc);
 });
 
 test('throw error: data has to be array', () => {

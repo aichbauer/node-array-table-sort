@@ -15,28 +15,24 @@ export const sortArrayByKey = (data, options) => {
 
   const dataToSort = [...data];
 
-  const sortedData = dataToSort.sort((currentObj, nextObj) => {
-    const currentValue = currentObj[options.active];
-    const nextValue = nextObj[options.active];
-
-    if (currentValue < nextValue) {
-      const sortTo = options[options.active].asc
-        ? -1
-        : 1;
-
-      return sortTo;
-    }
+  let sortedData = dataToSort.sort((currentObj, nextObj) => {
+    const currentValue = currentObj[options.active].toLowerCase();
+    const nextValue = nextObj[options.active].toLowerCase();
 
     if (currentValue > nextValue) {
-      const sortTo = options[options.active].asc
-        ? 1
-        : -1;
+      return 1;
+    }
 
-      return sortTo;
+    if (currentValue < nextValue) {
+      return -1;
     }
 
     return 0;
   });
+
+  if (!options[options.active].asc) {
+    sortedData = sortedData.reverse();
+  }
 
   return sortedData;
 };
