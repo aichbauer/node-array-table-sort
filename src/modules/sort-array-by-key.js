@@ -16,8 +16,8 @@ export const sortArrayByKey = (data, options) => {
   const dataToSort = [...data];
 
   let sortedData = dataToSort.sort((currentObj, nextObj) => {
-    const currentValue = currentObj[options.active].toLowerCase();
-    const nextValue = nextObj[options.active].toLowerCase();
+    const currentValue = `${currentObj[options.active] || ''}`.toLowerCase();
+    const nextValue = `${nextObj[options.active] || ''}`.toLowerCase();
 
     if (currentValue > nextValue) {
       return 1;
