@@ -25,6 +25,19 @@ test('check if data.first sorted desc', () => {
   expect(result).toEqual(expectedDesc);
 });
 
+test('check if numbers are sorting correctly', () => {
+  const result = sort(
+    [{ number: 2 }, { number: 1 }, { number: 5 }],
+    { active: 'number', number: { asc: false } },
+  );
+
+  expect(result).toEqual([
+    { number: 5 },
+    { number: 2 },
+    { number: 1 },
+  ]);
+});
+
 test('check if data.first sorted asc when two rows in a column have the same value', () => {
   const expectedAsc = [...expectedResultSortFirstAscWithSameValue];
   const result = sort(dataSameValue, sortOptions(true));
