@@ -38,6 +38,20 @@ test('check if numbers are sorting correctly', () => {
   ]);
 });
 
+test('check if falsy values are sorted to the end', () => {
+  const result = sort(
+    [{ number: 2 }, { number: null }, { number: 5 }, { number: 0 }],
+    { active: 'number', number: { asc: true } },
+  );
+
+  expect(result).toEqual([
+    { number: null },
+    { number: 0 },
+    { number: 2 },
+    { number: 5 },
+  ]);
+});
+
 test('check if data.first sorted asc when two rows in a column have the same value', () => {
   const expectedAsc = [...expectedResultSortFirstAscWithSameValue];
   const result = sort(dataSameValue, sortOptions(true));
